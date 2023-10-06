@@ -1,0 +1,190 @@
+[
+  {
+    "model": "factory.company",
+    "pk": 1,
+    "fields": {
+      "name": "Компания1",
+      "contact": 4,
+      "product": 1,
+      "provider": "Factory",
+      "credit": "0.00",
+      "date_create": "2023-10-06T14:58:49.636Z",
+      "level": 1
+    }
+  },
+  {
+    "model": "factory.company",
+    "pk": 2,
+    "fields": {
+      "name": "Компания2",
+      "contact": 5,
+      "product": 2,
+      "provider": "Factory",
+      "credit": "40000.00",
+      "date_create": "2023-10-06T15:00:17.812Z",
+      "level": 1
+    }
+  },
+  {
+    "model": "factory.contacts",
+    "pk": 1,
+    "fields": {
+      "email": "factory@factory.ru",
+      "country": "Россия",
+      "city": "Москва",
+      "street": "Спортивная",
+      "house": 2
+    }
+  },
+  {
+    "model": "factory.contacts",
+    "pk": 2,
+    "fields": {
+      "email": "factory2@factory.ru",
+      "country": "Россия",
+      "city": "Троицк",
+      "street": "Спортивная",
+      "house": 5
+    }
+  },
+  {
+    "model": "factory.contacts",
+    "pk": 4,
+    "fields": {
+      "email": "company@company.ru",
+      "country": "Россия",
+      "city": "Москва",
+      "street": "Космодемианская наб.",
+      "house": 43
+    }
+  },
+  {
+    "model": "factory.contacts",
+    "pk": 5,
+    "fields": {
+      "email": "company2@company.ru",
+      "country": "Россия",
+      "city": "Владимир",
+      "street": "Пушкова",
+      "house": 34
+    }
+  },
+  {
+    "model": "factory.contacts",
+    "pk": 6,
+    "fields": {
+      "email": "retail@retail.ru",
+      "country": "Белоруссия",
+      "city": "Минск",
+      "street": "Центральная",
+      "house": 6
+    }
+  },
+  {
+    "model": "factory.contacts",
+    "pk": 7,
+    "fields": {
+      "email": "retail2@retail.ru",
+      "country": "Россия",
+      "city": "Владимир",
+      "street": "Пушкова",
+      "house": 9
+    }
+  },
+  {
+    "model": "factory.factory",
+    "pk": 1,
+    "fields": {
+      "name": "Завод1",
+      "contact": 1,
+      "credit": "0.00",
+      "date_create": "2023-10-06T14:55:00.425Z",
+      "level": 0,
+      "product": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "factory.factory",
+    "pk": 2,
+    "fields": {
+      "name": "Завод2",
+      "contact": 2,
+      "credit": "0.00",
+      "date_create": "2023-10-06T14:55:39.621Z",
+      "level": 0,
+      "product": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "factory.products",
+    "pk": 1,
+    "fields": {
+      "title": "Ноутбук",
+      "model": "mac os",
+      "date_start_sell": "2023-10-06T14:52:40.250Z",
+      "is_start_sell": true
+    }
+  },
+  {
+    "model": "factory.products",
+    "pk": 2,
+    "fields": {
+      "title": "Ноутбук",
+      "model": "dell",
+      "date_start_sell": null,
+      "is_start_sell": false
+    }
+  },
+  {
+    "model": "factory.products",
+    "pk": 3,
+    "fields": {
+      "title": "Монитор",
+      "model": "asus",
+      "date_start_sell": null,
+      "is_start_sell": false
+    }
+  },
+  {
+    "model": "factory.products",
+    "pk": 4,
+    "fields": {
+      "title": "Монитор",
+      "model": "benq",
+      "date_start_sell": "2023-10-06T14:54:02.782Z",
+      "is_start_sell": true
+    }
+  },
+  {
+    "model": "factory.retail",
+    "pk": 1,
+    "fields": {
+      "name": "Ритейл1",
+      "contact": 6,
+      "product": 2,
+      "provider": "Company",
+      "credit": "0.00",
+      "date_create": "2023-10-06T15:02:28.841Z",
+      "level": 2
+    }
+  },
+  {
+    "model": "factory.retail",
+    "pk": 2,
+    "fields": {
+      "name": "Ритейл2",
+      "contact": 7,
+      "product": 3,
+      "provider": "Factory",
+      "credit": "70000.00",
+      "date_create": "2023-10-06T15:03:12.611Z",
+      "level": 1
+    }
+  }
+]

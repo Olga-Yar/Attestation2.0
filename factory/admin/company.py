@@ -13,10 +13,10 @@ from factory.models.company import Company
 class CompanyAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'contact', 'product',
-        'provider', 'credit', 'date_create', 'level', 'get_city',
+        'credit', 'level', 'get_city',
     )
     list_filter = ('contact__city',)
-    search_fields = ('name', 'provider',)
+    search_fields = ('name',)
     ordering = ('date_create',)
     actions = ['make_clear_credit']
 

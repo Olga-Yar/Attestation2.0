@@ -13,7 +13,7 @@ from factory.models.retail import Retail
 class RetailAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'contact', 'product',
-        'provider', 'credit', 'date_create', 'level', 'get_city',
+        'credit', 'level', 'get_city',
     )
     list_filter = ('contact__city',)
 

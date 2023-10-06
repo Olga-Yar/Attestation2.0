@@ -12,8 +12,8 @@ from factory.models.factory import Factory
 @admin.register(Factory)
 class FactoryAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'contact', 'product',
-        'credit', 'date_create', 'level', 'get_city',
+        'name', 'contact',
+        'credit', 'get_city',
     )
     list_filter = ('contact__city',)
 
