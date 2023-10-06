@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
 from factory.models.contacts import Contacts
-from factory.serialzers.contacts import ContactsSerializer
+from factory.serializers.contacts import ContactsSerializer
 
 
 class ContactsViewSet(ModelViewSet):

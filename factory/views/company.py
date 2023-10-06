@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
 from factory.models.company import Company
-from factory.serialzers.company import CompanySerializer
+from factory.serializers.company import CompanySerializer
 
 
 class CompanyViewSet(ModelViewSet):
