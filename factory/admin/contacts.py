@@ -15,5 +15,5 @@ class ContactsAdmin(admin.ModelAdmin):
         'email', 'country', 'city',
         'street', 'house',
     )
-    list_filter = ('contacts__city',)
+    list_filter = ('city',)
         

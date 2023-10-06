@@ -13,12 +13,18 @@ from factory.models.company import Company
 class CompanyAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'contact', 'product',
-        'provider', 'credit', 'date_create', 'level',
+        'provider', 'credit', 'date_create', 'level', 'get_city',
     )
-    list_filter = ('contacts__city',)
+    list_filter = ('contact__city',)
     search_fields = ('name', 'provider',)
     ordering = ('date_create',)
     actions = ['make_clear_credit']
+
+    def get_city(self, obj):
+        """Получаем значение поля 'city' через связь с моделью Contacts"""
+        return obj.contact.city
+
+    get_city.short_description = 'city'
 
     def view_provider_list(self, obj):
         """Отображение ссылки на поставщика"""

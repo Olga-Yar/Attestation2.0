@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from user.models import UserCustom
+from user.models import UserCustom, UserRoles
 
 
 class Command(BaseCommand):
@@ -9,8 +9,8 @@ class Command(BaseCommand):
         user = UserCustom.objects.create(
             pk=0,
             email='admin@admin.ru',
-            first_name='admin',
-            last_name='admin',
+            is_active=True,
+            role=UserRoles.MODERATOR,
             is_staff=True,
             is_superuser=True
         )
