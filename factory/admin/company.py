@@ -15,7 +15,7 @@ class CompanyAdmin(admin.ModelAdmin):
         'provider_link',
     )
     list_display_links = ('name',)
-    list_filter = ('contact__city',)
+    list_filter = ('contact__city', 'contact__country',)
     search_fields = ('name',)
     ordering = ('date_create',)
     actions = ['make_clear_credit']

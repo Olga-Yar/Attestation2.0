@@ -13,9 +13,9 @@ from factory.models.factory import Factory
 class FactoryAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'contact',
-        'credit', 'get_city',
+        'get_city',
     )
-    list_filter = ('contact__city',)
+    list_filter = ('contact__city', 'contact__country',)
 
     def get_city(self, obj):
         """Получаем значение поля 'city' через связь с моделью Contacts"""

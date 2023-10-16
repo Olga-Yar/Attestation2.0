@@ -9,7 +9,7 @@ class FactorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Factory
         fields = [
-            'name', 'contact', 'product', 'provider', 'credit',
+            'name', 'contact', 'product', 'provider',
             'date_create', 'level',
         ]
 
