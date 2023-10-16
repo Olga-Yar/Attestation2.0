@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.http import urlencode
 from django.contrib import messages
+from django.utils.safestring import mark_safe
 
 from factory.models.company import Company
 
@@ -14,7 +15,9 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'contact', 'product',
         'credit', 'level', 'get_city',
+        'provider_link',
     )
+    list_display_links = ('name',)
     list_filter = ('contact__city',)
     search_fields = ('name',)
     ordering = ('date_create',)
@@ -24,37 +27,48 @@ class CompanyAdmin(admin.ModelAdmin):
         """Получаем значение поля 'city' через связь с моделью Contacts"""
         return obj.contact.city
 
-    get_city.short_description = 'city'
+    get_city.short_description = 'Город'
 
-    def view_provider_list(self, obj):
-        """Отображение ссылки на поставщика"""
-        url = (
-            reverse('admin:factory_company_changelist')
-            + '?'
-            + urlencode({'company__id': f'{obj.id}'})
-        )
-        return format_html('<a href="{}">{} providers</a>', url)
+    def provider_link(self, obj):
+        return mark_safe(f'<a href="/admin/factory/contacts/{obj.provider.id}/change/">{obj.provider}</a>')
 
-    view_provider_list.short_description = 'Provider'
+    provider_link.short_description = 'Поставщик'
 
-    @admin.action(
-        permissions=['change'],
-        description='Очистить задолженность перед поставщиком у выбранных объектов',
-    )
     def make_clear_credit(self, request, queryset):
-        for item in queryset:
-            item.credit = 0
-            item.save()
+        for obj in queryset:
+            obj.credit = 0
+            obj.save()
 
         self.message_user(request,
-                           'задолженность успешно очищена.'
-                           % messages.SUCCESS
-                           )
+                          'задолженность успешно очищена.'.format(messages.SUCCESS)
+                          )
 
-        selected = queryset.values_list('pk', flat=True)
-        ct = ContentType.objects.get_for_model(queryset.model)
-        return HttpResponseRedirect('/export/?ct=%s&ids=%s' % (
-            ct.pk,
-            ','.join(str(pk) for pk in selected),
-        ))
-        
+        redirect_url = reverse('admin:factory_company_changelist')
+        return HttpResponseRedirect(redirect_url)
+
+    make_clear_credit.short_description = 'Очистить задолженность перед поставщиком у выбранных объектов'
+
+
+# @admin.action(
+#     permissions=['change'],
+#     description='Очистить задолженность перед поставщиком у выбранных объектов',
+# )
+# def make_clear_credit(self, request, queryset):
+#     for obj in queryset:
+#         obj.credit = 0
+#         obj.save()
+#
+#     self.message_user(request,
+#                       'задолженность успешно очищена.'
+#                       % messages.SUCCESS
+#                       )
+#
+#     selected = queryset.values_list('pk', flat=True)
+#     ct = ContentType.objects.get_for_model(queryset.model)
+#     return HttpResponseRedirect('/export/?ct=%s&ids=%s' % (
+#         ct.pk,
+#         ','.join(str(pk) for pk in selected),
+#     ))
+
+
+

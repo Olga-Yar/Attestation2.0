@@ -18,7 +18,7 @@ class Contacts(models.Model):
     provider_type = models.CharField(choices=PROVIDER, verbose_name='поставщик')
 
     def __str__(self):
-        return f'{self.email}, {self.country}, {self.city}'
+        return f'{self.email}'
 
     class Meta:
         verbose_name = 'контакт'
