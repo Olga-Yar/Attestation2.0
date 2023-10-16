@@ -1,9 +1,6 @@
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.utils.html import format_html
-from django.utils.http import urlencode
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 
@@ -30,45 +27,22 @@ class CompanyAdmin(admin.ModelAdmin):
     get_city.short_description = 'Город'
 
     def provider_link(self, obj):
+        """Ссылка на поставщика"""
         return mark_safe(f'<a href="/admin/factory/contacts/{obj.provider.id}/change/">{obj.provider}</a>')
 
     provider_link.short_description = 'Поставщик'
 
     def make_clear_credit(self, request, queryset):
+        """Очистка задолженности перед поставщиком"""
         for obj in queryset:
             obj.credit = 0
             obj.save()
 
         self.message_user(request,
-                          'задолженность успешно очищена.'.format(messages.SUCCESS)
+                          'Задолженность успешно очищена.'.format(messages.SUCCESS)
                           )
 
         redirect_url = reverse('admin:factory_company_changelist')
         return HttpResponseRedirect(redirect_url)
 
     make_clear_credit.short_description = 'Очистить задолженность перед поставщиком у выбранных объектов'
-
-
-# @admin.action(
-#     permissions=['change'],
-#     description='Очистить задолженность перед поставщиком у выбранных объектов',
-# )
-# def make_clear_credit(self, request, queryset):
-#     for obj in queryset:
-#         obj.credit = 0
-#         obj.save()
-#
-#     self.message_user(request,
-#                       'задолженность успешно очищена.'
-#                       % messages.SUCCESS
-#                       )
-#
-#     selected = queryset.values_list('pk', flat=True)
-#     ct = ContentType.objects.get_for_model(queryset.model)
-#     return HttpResponseRedirect('/export/?ct=%s&ids=%s' % (
-#         ct.pk,
-#         ','.join(str(pk) for pk in selected),
-#     ))
-
-
-

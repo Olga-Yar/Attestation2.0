@@ -21,5 +21,5 @@ class FactoryAdmin(admin.ModelAdmin):
         """Получаем значение поля 'city' через связь с моделью Contacts"""
         return obj.contact.city
 
-    get_city.short_description = 'city'
+    get_city.short_description = 'город'
         
