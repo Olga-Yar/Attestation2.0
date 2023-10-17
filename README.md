@@ -25,6 +25,21 @@
 
 Связь моделей происходит через поле provider (ссылка на модель Contacts).
 
+Расчет уровня сети:
+```
+    def save(self, *args, **kwargs):
+        """Определение уровня сети"""
+        if self.provider.provider_type == "Factory":
+            self.level = 1
+        elif self.provider.provider_type == "Retail" or self.provider.provider_type == "Company":
+            self.level = 2
+        else:
+            raise ValidationError(
+                _('Ошибка в выборе поставщика.'),
+            )
+        super().save(*args, **kwargs)
+```
+
 ---
 ### Модели и поля приложения
 
@@ -42,7 +57,7 @@
   - provider - связь через ForeignKey с моделью Contacts для связи с поставщиком;
   - credit - задолженность перед поставщиком;
   - date_create - дата создания, автоматическое поле;
-  - level - уровень сети, по умолчанию 0.
+  - level - уровень сети, по умолчанию 1. Автоматический расчет через поле provider_type.
 
 - Retail:
   - name - название, максимальная длина 50 символов;
@@ -51,7 +66,7 @@
   - provider - связь через ForeignKey с моделью Contacts для связи с поставщиком;
   - credit - задолженность перед поставщиком;
   - date_create - дата создания, автоматическое поле;
-  - level - уровень сети, по умолчанию 0.
+  - level - уровень сети, по умолчанию 1. Автоматический расчет через поле provider_type.
 
 - Contacts:
   - email - поле email;
@@ -59,7 +74,7 @@
   - city - город;
   - street - улица;
   - house - дом;
-  - provider_type - тип поставщика - choices field.
+  - provider_type - тип сети - choices field, по данному полю определяется уровень сети.
 
 - Products:
   - title - название товара;
