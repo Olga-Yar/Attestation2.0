@@ -1,4 +1,7 @@
 from django.db import models
+from rest_framework.exceptions import ValidationError
+
+from django.utils.translation import gettext_lazy as _
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -19,3 +22,15 @@ class Company(models.Model):
     class Meta:
         verbose_name = 'ИП'
         verbose_name_plural = 'ИП'
+
+    def save(self, *args, **kwargs):
+        """Определение уровня сети"""
+        if self.provider.provider_type == "Factory":
+            self.level = 1
+        elif self.provider.provider_type == "Retail" or self.provider.provider_type == "Company":
+            self.level = 2
+        else:
+            raise ValidationError(
+                _('Ошибка в выборе поставщика.'),
+            )
+        super().save(*args, **kwargs)
