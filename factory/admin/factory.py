@@ -15,7 +15,7 @@ class FactoryAdmin(admin.ModelAdmin):
         'name', 'contact',
         'get_city',
     )
-    list_filter = ('contact__city', 'contact__country',)
+    list_filter = ('contact__city',)
 
     def get_city(self, obj):
         """Получаем значение поля 'city' через связь с моделью Contacts"""
