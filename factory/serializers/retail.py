@@ -19,5 +19,3 @@ class RetailSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Обновление задолженности перед поставщиком запрещено.")
 
         return super().update(instance, validated_data)
-        
-        

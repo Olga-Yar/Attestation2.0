@@ -1,7 +1,4 @@
 from django.db import models
-from rest_framework.exceptions import ValidationError
-
-from django.utils.translation import gettext_lazy as _
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -22,4 +19,3 @@ class Company(models.Model):
     class Meta:
         verbose_name = 'ИП'
         verbose_name_plural = 'ИП'
-        

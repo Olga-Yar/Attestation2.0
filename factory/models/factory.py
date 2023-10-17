@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Sum
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -17,5 +16,3 @@ class Factory(models.Model):
     class Meta:
         verbose_name = 'завод'
         verbose_name_plural = 'завод'
-
-        

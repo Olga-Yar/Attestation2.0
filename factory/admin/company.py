@@ -38,9 +38,10 @@ class CompanyAdmin(admin.ModelAdmin):
             obj.credit = 0
             obj.save()
 
-        self.message_user(request,
-                          'Задолженность успешно очищена.'.format(messages.SUCCESS)
-                          )
+        self.message_user(
+            request,
+            'Задолженность успешно очищена.'.format(messages.SUCCESS)
+        )
 
         redirect_url = reverse('admin:factory_company_changelist')
         return HttpResponseRedirect(redirect_url)

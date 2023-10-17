@@ -1,10 +1,4 @@
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.utils.html import format_html
-from django.utils.http import urlencode
-from django.contrib import messages
 
 from factory.models.factory import Factory
 
@@ -22,4 +16,3 @@ class FactoryAdmin(admin.ModelAdmin):
         return obj.contact.city
 
     get_city.short_description = 'город'
-        

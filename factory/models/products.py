@@ -26,4 +26,3 @@ class Products(models.Model):
             self.date_start_sell = datetime.now()
 
         super().save(*args, **kwargs)
-        

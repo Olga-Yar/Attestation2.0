@@ -1,9 +1,6 @@
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.utils.html import format_html
-from django.utils.http import urlencode
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 
@@ -41,12 +38,12 @@ class RetailAdmin(admin.ModelAdmin):
             obj.credit = 0
             obj.save()
 
-        self.message_user(request,
-                          'Задолженность успешно очищена.'.format(messages.SUCCESS)
-                          )
+        self.message_user(
+            request,
+            'Задолженность успешно очищена.'.format(messages.SUCCESS)
+        )
 
         redirect_url = reverse('admin:factory_retail_changelist')
         return HttpResponseRedirect(redirect_url)
 
     make_clear_credit.short_description = 'Очистить задолженность перед поставщиком у выбранных объектов'
-                 

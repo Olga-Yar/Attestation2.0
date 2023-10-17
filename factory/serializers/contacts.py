@@ -11,5 +11,3 @@ class ContactsSerializer(serializers.ModelSerializer):
         fields = [
             'email', 'country', 'city', 'street', 'house',
         ]
-        
-        

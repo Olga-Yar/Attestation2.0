@@ -1,7 +1,5 @@
 from django.db import models
-from rest_framework.exceptions import ValidationError
 
-from django.utils.translation import gettext_lazy as _
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -22,4 +20,3 @@ class Retail(models.Model):
     class Meta:
         verbose_name = 'розничная сеть'
         verbose_name_plural = 'розничные сети'
-        

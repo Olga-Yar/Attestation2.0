@@ -15,4 +15,3 @@ class ProductsViewSet(ModelViewSet):
     def retrieve(self, request, pk=None, **kwargs):
         """Отображение личных записей"""
         pass
-        

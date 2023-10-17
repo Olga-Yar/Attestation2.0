@@ -5,10 +5,10 @@ NULLABLE = {'blank': True, 'null': True}
 
 class Contacts(models.Model):
     PROVIDER = [
-            ('Factory', 'Factory'),
-            ('Company', 'Company'),
-            ('Retail', 'Retail'),
-        ]
+        ('Factory', 'Factory'),
+        ('Company', 'Company'),
+        ('Retail', 'Retail'),
+    ]
 
     email = models.EmailField(verbose_name='email', unique=True)
     country = models.CharField(max_length=20, verbose_name='страна')
@@ -23,4 +23,3 @@ class Contacts(models.Model):
     class Meta:
         verbose_name = 'контакт'
         verbose_name_plural = 'контакты'
-        

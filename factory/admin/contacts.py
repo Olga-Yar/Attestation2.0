@@ -1,10 +1,5 @@
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.utils.html import format_html
-from django.utils.http import urlencode
-from django.contrib import messages
+
 
 from factory.models.contacts import Contacts
 
@@ -16,4 +11,3 @@ class ContactsAdmin(admin.ModelAdmin):
         'street', 'house',
     )
     list_filter = ('city', 'country',)
-        

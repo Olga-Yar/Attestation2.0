@@ -12,5 +12,3 @@ class FactorySerializer(serializers.ModelSerializer):
             'name', 'contact', 'product', 'provider',
             'date_create', 'level',
         ]
-
-        
