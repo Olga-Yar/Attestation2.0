@@ -89,23 +89,23 @@
 
 При просмотре списка ИП или розничных сетей отображается столбец "Поставщик"
 
-![Django admin_list_company](staticfiles/readme_files/Снимок экрана 2023-10-17 в 13.34.12.png)
+![Django admin_list_company](staticfiles/readme_files/1.png)
 
 При нажатии на поставщика, перенаправляет на страницу этого поставщика
 
-![Django admin_provider](staticfiles/readme_files/Снимок экрана 2023-10-17 в 13.34.30.png)
+![Django admin_provider](staticfiles/readme_files/2.png)
 
 - Фильтр по названию города и по определенной страны
 
-![Django admin_filter](staticfiles/readme_files/Снимок экрана 2023-10-17 в 13.40.03.png)
+![Django admin_filter](staticfiles/readme_files/3.png)
 
 - "admin action", очищающий задолженность перед поставщиком у выбранных объектов
 
-![Django admin_action](staticfiles/readme_files/Снимок экрана 2023-10-17 в 13.42.54.png)
+![Django admin_action](staticfiles/readme_files/4.png)
 
 Итог admin action:
 
-![Django admin_action_result](staticfiles/readme_files/Снимок экрана 2023-10-17 в 13.44.27.png)
+![Django admin_action_result](staticfiles/readme_files/5.png)
 
 ---
 
